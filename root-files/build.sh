@@ -21,7 +21,7 @@ set -o pipefail
 #
 build_create_directories() {
     mkdir -p "${BEACH_APPLICATION_PATH}/Data"
-    chown -R 1000 "${BEACH_APPLICATION_PATH}"
+    chown -R ${PHP_FPM_GROUP:-1000} "${BEACH_APPLICATION_PATH}"
 }
 
 # ---------------------------------------------------------------------------------------
@@ -31,9 +31,9 @@ build_create_directories() {
 # @return void
 #
 build_create_user() {
-    info "🛠 Beach: Creating user and group beach (1000)"
-    groupadd --gid 1000 beach
-    useradd --home-dir /home/beach --shell /bin/bash --gid beach --uid 1000 beach 1>$(debug_device)
+    info "🛠 Beach: Creating user and group beach (${PHP_FPM_GROUP:-1000})"
+    groupadd --gid ${PHP_FPM_GROUP:-1000} beach
+    useradd --home-dir /home/beach --shell /bin/bash --gid beach --uid ${PHP_FPM_USER:-1000} beach 1>$(debug_device)
 
     chown beach:beach /home/beach ${SUPERVISOR_BASE_PATH}/etc/conf.d
     chmod 775 /home/beach ${SUPERVISOR_BASE_PATH}/etc/conf.d

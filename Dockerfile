@@ -23,7 +23,7 @@ RUN export FLOWNATIVE_LOG_PATH_AND_FILENAME=/dev/stdout \
     && /build.sh build \
     && /build.sh clean
 
-USER 1000
+USER ${PHP_FPM_USER:-1000}
 
 EXPOSE 2022 9000 9001 9002
 

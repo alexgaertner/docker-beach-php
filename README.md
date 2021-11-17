@@ -44,6 +44,14 @@ similar mechanism in Kubernetes or your actual platform.
 
 ## Environment variables
 
+### PHP FPM
+
+| Variable Name                            | Type    | Default                   | Description                                                                          |
+|:-----------------------------------------|:--------|:--------------------------|:-------------------------------------------------------------------------------------|
+| PHP_FPM_USER                             | boolean | 1000                      |                                                                                      |
+| PHP_FPM_GROUP                            | boolean | 1000                      |                                                                                      |
+
+
 ### Flow
 
 | Variable Name                            | Type    | Default                   | Description                                                                          |
